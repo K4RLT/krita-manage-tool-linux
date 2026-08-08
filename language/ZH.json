@@ -33,7 +33,7 @@
         "about-title": "关于",
         "about-label-l": "版本: {$version}\n作者: {$developer}",
         "about-label-r": "中文语言文件提供者：白熊Fx\n(其他语言提供者切换语言后可看)",
-        "title": "krita配置管理工具",
+        "title": "Krita 配置管理工具 (第三方)",
         "clear": "重置/清空配置",
         "error": "错误",
         "error-temp-del-fail": "删除临时文件(程序根目录/temp)失败，因为{$e}，请手动删除。",

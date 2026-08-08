@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.krita_manage_tool</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Configuration Manager for Krita</name>
+  <summary>Easily manage and back up Krita resource profiles and configurations</summary>
+  
+  <description>
+    <p>
+      Configuration Manager for Krita is an unofficial utility designed to help digital artists backup, restore, and switch between multiple Krita workspace configurations, brushes, palettes, and hotkeys.
+    </p>
+    <p>
+      Features include:
+    </p>
+    <ul>
+      <li>1-click backup profile creation for Flatpak and native Krita installations</li>
+      <li>Instant switching between different workspace and brush setup profiles</li>
+      <li>Import and export configuration packages as .zip archives</li>
+      <li>Safe reset of Krita settings without losing personal assets</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">com.github.krita_manage_tool.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/K4RLT/krita-manage-tool-linux/main/assets/44788d3173643ec7c40dde7b4b1e01eafe92ece1.png</image>
+    </screenshot>
+  </screenshots>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="0.0.4" date="2026-08-08">
+      <description>
+        <p>Initial Linux release with GTK4 and Libadwaita GNOME interface.</p>
+      </description>
+    </release>
+  </releases>
+
+  <developer_name>Yiran / 毛艺然</developer_name>
+  <url type="homepage">https://github.com/K4RLT/krita-manage-tool-linux</url>
+  <url type="bugtracker">https://github.com/K4RLT/krita-manage-tool-linux/issues</url>
+</component>

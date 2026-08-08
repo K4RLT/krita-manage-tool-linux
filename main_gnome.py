@@ -509,8 +509,11 @@ class SettingsDialog(Adw.PreferencesDialog):
         page.add(about_group)
 
         ver_text = json_manage.language_manager.get_static().get('about-label-l', '').replace('{$version}', version).replace('{$developer}', developer)
-        about_row = Adw.ActionRow(title="Krita Reset &amp; Backup Tool", subtitle=ver_text)
+        about_row = Adw.ActionRow(title="Configuration Manager for Krita", subtitle=ver_text)
         about_group.add(about_row)
+
+        disclaimer_row = Adw.ActionRow(title="Disclaimer", subtitle="An unofficial utility for Krita configuration profiles. Not affiliated with KDE or Krita.")
+        about_group.add(disclaimer_row)
 
         fork_row = Adw.ActionRow(title="Linux Port", subtitle="Forked to Linux by Yiran / 毛艺然")
         about_group.add(fork_row)

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Krita Manage Tool
+Name=Configuration Manager for Krita
 Comment=Manage Krita resource profiles and configurations
 Exec=krita-manage-tool
 Icon=com.github.krita_manage_tool
