@@ -52,15 +52,17 @@ class MainWindow(Adw.ApplicationWindow):
         self.header_title = Adw.WindowTitle(title=json_manage.language_manager.get_static().get('title'))
         self.header_bar.set_title_widget(self.header_title)
 
-        # Header Buttons (Settings & Refresh)
+        # Left Header Button (Refresh/Reload)
+        self.refresh_btn = Gtk.Button(icon_name="view-refresh-symbolic")
+        self.refresh_btn.set_tooltip_text("Reload Configs")
+        self.refresh_btn.connect('clicked', lambda x: self.load_configs())
+        self.header_bar.pack_start(self.refresh_btn)
+
+        # Right Header Button (Settings)
         self.settings_btn = Gtk.Button(icon_name="emblem-system-symbolic")
         self.settings_btn.set_tooltip_text(json_manage.language_manager.get_data().get('setting', 'Settings'))
         self.settings_btn.connect('clicked', self.on_open_settings)
         self.header_bar.pack_end(self.settings_btn)
-
-        self.refresh_btn = Gtk.Button(icon_name="view-refresh-symbolic")
-        self.refresh_btn.connect('clicked', lambda x: self.load_configs())
-        self.header_bar.pack_end(self.refresh_btn)
 
         # Adw.Clamp wrapper to keep window compact and pad on larger screens
         self.clamp = Adw.Clamp()
@@ -191,6 +193,17 @@ class MainWindow(Adw.ApplicationWindow):
         platform_dependence.update_krita_status()
 
         self.selected_config_name = None
+        self.load_configs()
+
+    def retranslate_ui(self):
+        self.set_title(json_manage.language_manager.get_static().get('title', 'Krita Configuration Manager'))
+        self.header_title.set_title(json_manage.language_manager.get_static().get('title'))
+        self.settings_btn.set_tooltip_text(json_manage.language_manager.get_data().get('setting', 'Settings'))
+        self.reset_btn.set_label(json_manage.language_manager.get_static().get('clear', 'Reset Krita'))
+        self.apply_btn.set_label(json_manage.language_manager.get_data().get('apply', 'Apply Config'))
+        self.import_btn.set_label(json_manage.language_manager.get_data().get('input', 'Import'))
+        self.export_btn.set_label(json_manage.language_manager.get_data().get('output', 'Export'))
+        platform_dependence.update_krita_status()
         self.load_configs()
 
     def update_status_ui(self, is_running):
@@ -477,10 +490,16 @@ class SettingsDialog(Adw.PreferencesDialog):
         lang_names = list(langs.keys())
         self.lang_paths = list(langs.values())
 
+        current_lang_code = json_manage.settings_manager.get_setting('window_language')
+        selected_idx = 0
         model = Gtk.StringList()
-        for l in lang_names:
-            model.append(l)
+        for idx, (l_name, l_path) in enumerate(zip(lang_names, self.lang_paths)):
+            model.append(l_name)
+            if current_lang_code and current_lang_code in os.path.basename(l_path):
+                selected_idx = idx
+
         self.lang_combo.set_model(model)
+        self.lang_combo.set_selected(selected_idx)
         self.lang_combo.set_valign(Gtk.Align.CENTER)
         lang_row.add_suffix(self.lang_combo)
         gen_group.add(lang_row)
@@ -503,6 +522,8 @@ class SettingsDialog(Adw.PreferencesDialog):
         save_btn.connect('clicked', self.on_save)
         save_btn_row.set_child(save_btn)
         gen_group.add(save_btn_row)
+
+        self.main_window = kwargs.get('transient_for')
 
     def on_browse_path(self, btn):
         dialog = Gtk.FileDialog()
@@ -544,6 +565,9 @@ class SettingsDialog(Adw.PreferencesDialog):
         idx = self.lang_combo.get_selected()
         if idx < len(self.lang_paths):
             json_manage.language_manager.reload_for_language(self.lang_paths[idx])
+
+        if self.main_window and hasattr(self.main_window, 'retranslate_ui'):
+            self.main_window.retranslate_ui()
 
         self.close()
 
