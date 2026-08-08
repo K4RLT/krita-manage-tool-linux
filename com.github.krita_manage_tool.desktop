@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Krita Manage Tool
 Comment=Manage Krita resource profiles and configurations
-Exec=/opt/krita-manage-tool/KritaManageTool
-Icon=/opt/krita-manage-tool/icon.png
+Exec=krita-manage-tool
+Icon=com.github.krita_manage_tool
 Terminal=false
 Type=Application
 Categories=Graphics;Utility;

@@ -1,0 +1,31 @@
+app-id: com.github.krita_manage_tool
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: krita-manage-tool
+
+finish-args:
+  # Display & UI access
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+
+  # Filesystem access: Flatpak Krita, native Krita, and Documents backup directory
+  - --filesystem=~/.var/app/org.kde.krita
+  - --filesystem=~/.local/share/krita
+  - --filesystem=~/Documents/krita-config-tool:create
+
+modules:
+  - name: krita-manage-tool
+    buildsystem: simple
+    build-commands:
+      - install -d /app/bin
+      - install -d /app/share/krita-manage-tool
+      - cp -r * /app/share/krita-manage-tool/
+      - printf '#!/bin/sh\nexec python3 /app/share/krita-manage-tool/main.py "$@"\n' > /app/bin/krita-manage-tool
+      - chmod +x /app/bin/krita-manage-tool
+      - install -D -m 644 icon.png /app/share/icons/hicolor/512x512/apps/com.github.krita_manage_tool.png
+      - install -D -m 644 com.github.krita_manage_tool.desktop /app/share/applications/com.github.krita_manage_tool.desktop
+    sources:
+      - type: dir
+        path: .
