@@ -180,7 +180,8 @@ class LangManager(JsonManage):
         }
 
         self.set_default_settings(default_settings)
-        self.language_dir = os.path.join(os.getcwd(), 'language')
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.language_dir = os.path.join(base_dir, 'language')
         self.set_settings_path(self.get_current_lang_path())
 
     def get_current_lang_path(self):

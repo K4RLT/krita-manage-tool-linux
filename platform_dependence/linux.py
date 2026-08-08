@@ -19,13 +19,17 @@ def get_default_k_r_path() -> str:
     return os.path.expanduser('~/.local/share/krita')
 
 def get_app_icon() -> str:
-    root_png = os.path.join(os.getcwd(), 'icon.png')
-    if os.path.exists(root_png):
-        return root_png
-    res_png = os.path.join(os.getcwd(), 'resources', 'app-icon.png')
-    if os.path.exists(res_png):
-        return res_png
-    return os.path.join(os.getcwd(), 'icon.ico')
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    candidates = [
+        '/app/share/icons/hicolor/512x512/apps/com.github.krita_manage_tool.png',
+        os.path.join(base_dir, 'icon.png'),
+        os.path.join(base_dir, 'resources', 'icon.png'),
+        os.path.join(os.getcwd(), 'icon.png')
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return os.path.join(base_dir, 'resources', 'icon.png')
 
 def apply_theme_to_titlebar(master):
     pass
