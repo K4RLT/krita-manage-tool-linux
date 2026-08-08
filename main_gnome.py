@@ -18,6 +18,8 @@ class KritaManageApplication(Adw.Application):
     def __init__(self):
         super().__init__(application_id='com.github.krita_manage_tool',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
+        GLib.set_prgname('com.github.krita_manage_tool')
+        GLib.set_application_name('Krita Manage Tool')
 
     def do_activate(self):
         win = self.props.active_window
