@@ -34,9 +34,9 @@ class MainWindow(Adw.ApplicationWindow):
         self.set_default_size(780, 520)
 
         # Set Application Icon
+        self.set_icon_name("com.github.krita_manage_tool")
         icon_path = platform_dependence.get_app_icon()
         if os.path.exists(icon_path):
-            self.set_icon_name("com.github.krita_manage_tool")
             icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
             icon_theme.add_search_path(os.path.dirname(icon_path))
 
