@@ -19,6 +19,9 @@
       <li>Import and export configuration packages as .zip archives</li>
       <li>Safe reset of Krita settings without losing personal assets</li>
     </ul>
+    <p>
+      Originally created for Windows by 白熊Fx (White Bear Fx) and ported to Linux by Yiran / 毛艺然.
+    </p>
   </description>
 
   <launchable type="desktop-id">com.github.krita_manage_tool.desktop</launchable>
