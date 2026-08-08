@@ -10,7 +10,9 @@ English | [简体中文](./README-ZH.md)
 
 As a programming beginner, my code might be a bit messy. This is my first completed project.
 
-> **Linux Port**: Ported to Linux with a native GTK4 / Libadwaita GNOME UI by **Yiran / 毛艺然**.
+> **Linux Port**: Ported to Linux with a native GTK4 / Libadwaita GNOME UI by **Yiran / 毛艺然** with AI pair-programming assistance.
+> 
+> *Contributions, code cleanup, and new feature suggestions from the open source community are warmly welcomed and amazingly appreciated!*
 
 ![screenshot](./assets/44788d3173643ec7c40dde7b4b1e01eafe92ece1.png)
 

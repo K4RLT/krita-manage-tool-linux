@@ -10,7 +10,9 @@
 
 作为编程初学者，我的代码可能略显杂乱。这是我第一个完整项目。
 
-> **Linux 移植**: 由 **Yiran / 毛艺然** 移植至 Linux 平台，并提供原生 GTK4 / Libadwaita GNOME 界面。
+> **Linux 移植**: 由 **Yiran / 毛艺然** 在 AI 辅助编程下移植至 Linux 平台，并提供原生 GTK4 / Libadwaita GNOME 界面。
+> 
+> *极其欢迎并感谢开源社区的任何代码贡献、优化与新功能建议！*
 
 ![screenshot](./assets/44788d3173643ec7c40dde7b4b1e01eafe92ece1.png)
 
